@@ -1,0 +1,62 @@
+body {
+  padding-top: 20px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #313131;
+  margin: 5px;
+  background: url("https://internetecoisas.com.br/img/Background.jpg") no-repeat
+    fixed center;
+  background-size: cover;
+}
+
+table {
+  padding: 5px;
+}
+
+.border-rounded {
+  border: #000000 solid 3px;
+  border-radius: 20px;
+}
+
+th {
+  padding: 5px;
+  color: #ffffff;
+  background: #404040;
+}
+
+td {
+  text-align: center;
+  /* padding: 5px; */
+  border-radius: 10px;
+  background: #a0a0a0;
+  /* border: #000000 solid 1px; */
+  margin: 10px;
+
+
+}
+
+#container {
+  position: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#btn btn-primary {
+  position: center;
+}
+
+
+
+#highlight {
+  background: #ffff00;
+}
+#todaysDay {
+  color: #ff0000;
+}
+
+#table-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

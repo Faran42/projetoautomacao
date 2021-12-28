@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+
+    <script>
+      function myFunction1() {
+        var elmnt = document.getElementById("img1");
+        elmnt.scrollIntoView();
+      }
+    </script>
+    <script>
+      function myFunction2() {
+        var elmnt = document.getElementById("img2");
+        elmnt.scrollIntoView();
+      }
+    </script>
+    <script>
+      function submitMessage() {
+        alert("Data/Hora Salvos");
+        setTimeout(function () {
+          document.location.reload(false);
+        }, 500);
+      }
+    </script>
+
+    <script>
+      function inputSet() {
+        document.getElementById("settime").value = "13:24:59";
+      }
+    </script>
+
+    <script>
+      var semana = [
+        "Domingo",
+        "Segunda-Feira",
+        "Terça-Feira",
+        "Quarta-Feira",
+        "Quinta-Feira",
+        "Sexta-Feira",
+        "Sábado",
+      ];
+      var d = new Date();
+      document.getElementById("dia").innerHTML = semana[d.getDay()];
+    </script>
+
+    <script>
+      var today = new Date().getDay();
+      $("#" + today).addClass("highlight");
+    </script>
+    <script>
+      var d = new Date();
+      var weekday = new Array(7);
+      weekday[0] = "sun";
+      weekday[1] = "mon";
+      weekday[2] = "tue";
+      weekday[3] = "wed";
+      weekday[4] = "thu";
+      weekday[5] = "fri";
+      weekday[6] = "sat";
+      document
+        .getElementsByClassName(weekday[d.getDay()])[0]
+        .classList.add("todaysDay");
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header">
+      <div id="header-title">
+        <h1>Sistema de Irrigação Automática</h1>
+      </div>
+      <div id="header-subtitle">
+        <h2>Baseado no ESP32 WebServer</h2>
+      </div>
+      <div id="header-buttons">
+        <a class="btn btn-primary disabled" href="/" role="button">Home</a>
+        <a class="btn btn-primary button" href="/page2" role="button"
+          >Configuração</a
+        >
+        <a class="btn btn-primary" href="/page3" role="button">Histórico</a>
+      </div>
+      <div id="header-subtitle">
+        <h2 class="text-center">
+          Copyright (C) 2021
+          <a href="https://thingspeak.com/channels/1511300"
+            >João Maria Soares</a
+          >
+        </h2>
+      </div>
+    </div>
+
+    <!-- table -->
+
+    <div id="home-table">
+      <div id="table-title">
+        <h1>Monitor de Condições Ambientais - Sistema de Irrigação</h1>
+      </div>
+      <div id="table-body">
+        <div class="line">
+          <div class="gauge">
+            <div id="chart_div" style="width: 150px; height: 150px"></div>
+          </div>
+          <div class="content">
+            <div class="sector">
+              <h1>Setor 1 Status: %GPIO_STATE1%</h1>
+              <div>
+                <a class="btn btn-primary" href="/setor1on" role="button">ON</a>
+                <a class="btn btn-danger" href="/setor1off" role="button"
+                  >OFF</a
+                >
+              </div>
+            </div>
+            <div class="sector">
+              <h1>Setor 1 Status: %GPIO_STATE1%</h1>
+              <div>
+                <a class="btn btn-primary" href="/setor1on" role="button">ON</a>
+                <a class="btn btn-danger" href="/setor1off" role="button"
+                  >OFF</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="gauge">
+            <div id="chart_divB" style="width: 150px; height: 150px"></div>
+          </div>
+          <div class="content">
+            <div class="sector">
+              <h1>Setor 1 Status: %GPIO_STATE1%</h1>
+              <div>
+                <a class="btn btn-primary" href="/setor1on" role="button">ON</a>
+                <a class="btn btn-danger" href="/setor1off" role="button"
+                  >OFF</a
+                >
+              </div>
+            </div>
+            <div class="sector">
+              <h1>Setor 1 Status: %GPIO_STATE1%</h1>
+              <div>
+                <a class="btn btn-primary" href="/setor1on" role="button">ON</a>
+                <a class="btn btn-danger" href="/setor1off" role="button"
+                  >OFF</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="table-footer">
+          <h1>Última atualização: %SEMANA% - %HORA%</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

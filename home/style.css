@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("https://internetecoisas.com.br/img/Background.jpg") no-repeat
+    fixed center;
+  background-size: cover;
+}
+
+#header {
+}
+
+#header-title {
+  text-align: center;
+}
+
+#header-title h1 {
+  font-size: 60px;
+}
+
+#header-subtitle {
+  text-align: center;
+}
+
+#header-subtitle h2 {
+  font-size: 20px;
+}
+
+#header-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin: 0 5px;
+}
+
+/* TABLE */
+
+#home-table {
+  width: 50%;
+  margin-left: 25%;
+
+  /* background-color: yellow; */
+}
+
+#table-title {
+  background-color: #464646;
+  /* background-color: #a0a0a0; */
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+
+#table-title h1 {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+#table-body {
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1%;
+}
+.gauge {
+  background-color: #a0a0a0;
+  width: 33%;
+  height: 200px;
+  margin-right: 1%;
+  border-radius: 5px;
+}
+
+.content {
+  width: 66%;
+  background-color: #a0a0a0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content h1 {
+  display: block;
+  font-size: 20px;
+}
+
+.sector {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  /* background-color: red; */
+}
+
+#table-footer {
+  background-color: #464646;
+  /* background-color: #a0a0a0; */
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+
+#table-footer h1 {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}

@@ -1,0 +1,211 @@
+<!-- // com o script do set time para adicionar os segundos...    
+//<td> <form action="/get" target="hidden-form">Setor  01 - 1/3 : <input id="settime" type="time" step="1" name="s1hi1">
+// <input type="submit" value="Salvar" onclick="submitMessage()"></form> com 
+//  <!-  <meta http-equiv='refresh' content="20; url=/">
+// HTML web page to handle 3 input fields (inputString, inputInt, inputFloat)
+const char index_html[] PROGMEM = R"rawliteral( -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sistema de Irrigação</title>
+    <!-- <meta http-equiv="refresh" content="30; url=/" /> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+    <script>
+      function myFunction1() {
+        var elmnt = document.getElementById("img1");
+        elmnt.scrollIntoView();
+      }
+    </script>
+    <script>
+      function myFunction2() {
+        var elmnt = document.getElementById("img2");
+        elmnt.scrollIntoView();
+      }
+    </script>
+    <script>
+      function submitMessage() {
+        alert("Data/Hora Salvos");
+        setTimeout(function () {
+          document.location.reload(false);
+        }, 500);
+      }
+    </script>
+
+    <script>
+      function inputSet() {
+        document.getElementById("settime").value = "13:24:59";
+      }
+    </script>
+
+    <script>
+      var semana = [
+        "Domingo",
+        "Segunda-Feira",
+        "Terça-Feira",
+        "Quarta-Feira",
+        "Quinta-Feira",
+        "Sexta-Feira",
+        "Sábado",
+      ];
+      var d = new Date();
+      document.getElementById("dia").innerHTML = semana[d.getDay()];
+    </script>
+
+    <script>
+      var today = new Date().getDay();
+      $("#" + today).addClass("highlight");
+    </script>
+    <script>
+      var d = new Date();
+      var weekday = new Array(7);
+      weekday[0] = "sun";
+      weekday[1] = "mon";
+      weekday[2] = "tue";
+      weekday[3] = "wed";
+      weekday[4] = "thu";
+      weekday[5] = "fri";
+      weekday[6] = "sat";
+      document
+        .getElementsByClassName(weekday[d.getDay()])[0]
+        .classList.add("todaysDay");
+    </script>
+  </head>
+  <body>
+    <p>&nbsp;</p>
+
+    <div class="container">
+      <h1 class="text-center">Sistema de Irrigação Automática</h1>
+      <p class="text-center">Baseado no ESP32 WebServer</p>
+      <p class="text-center">
+        <a class="btn btn-primary disabled" href="/" role="button">Home</a>
+        <a class="btn btn-primary" href="/page2" role="button">Configuração</a>
+        <a class="btn btn-primary" href="/page3" role="button">Histórico</a>
+      </p>
+      <p class="text-center">
+        Copyright (C) 2021
+        <a href="https://thingspeak.com/channels/1511300">João Maria Soares</a>.
+      </p>
+      <p></p>
+    </div>
+
+    <table align="center" background-color:#ffffff00>
+      <tr >
+        <th colspan="2">
+          <div id="table-title" class="border-rounded" >
+            Monitor de Condições Ambientais - Sistema de Irrigação
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <div id="chart_div" style="width: 150px; height: 150px"></div>
+        </td>
+        <td>
+          <p class="text-center">
+            Setor 1 Status: <strong> %GPIO_STATE1%</strong>
+            <a class="btn btn-primary" href="/setor1on" role="button">ON</a>
+            <a class="btn btn-danger" href="/setor1off" role="button">OFF</a>
+          </p>
+          <p>&nbsp;</p>
+          <p class="text-center">
+            Setor 2 Status: <strong> %GPIO_STATE2%</strong>
+            <a class="btn btn-primary" href="/setor2on" role="button">ON</a>
+            <a class="btn btn-danger" href="/setor2off" role="button">OFF</a>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="chart_divB" style="width: 150px; height: 150px"></div>
+        </td>
+
+        <td>
+          <p class="text-center">
+            Setor 3 Status: <strong> %GPIO_STATE3%</strong>
+            <a class="btn btn-primary" href="/setor3on" role="button">ON</a>
+            <a class="btn btn-danger" href="/setor3off" role="button">OFF</a>
+          </p>
+          <p>&nbsp;</p>
+          <p class="text-center">
+            Setor 4 Status: <strong> %GPIO_STATE4%</strong>
+            <a class="btn btn-primary" href="/setor4on" role="button">ON</a>
+            <a class="btn btn-danger" href="/setor4off" role="button">OFF</a>
+          </p>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <th><div align="center">Última atualização:</div></th>
+        <th id="dt">
+          <div align="center">%SEMANA% <b> &nbsp;-&nbsp;</b> <b>%HORA%</b></div>
+        </th>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge'], 'language': 'pt-br'});
+      google.charts.setOnLoadCallback(drawTemG);
+      var chartTemG, dataTemG, optionsTemG, chartTemH, dataTemH, optionsTemH;
+        function drawTemG() {
+          var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            [' Temp °C ', %TEMPERATURE%],
+          ]);
+          var options = {
+          min: -10, max: 60,
+          majorTicks: ['-10', '0', '10', '20', '30', '40', '50', '60'],
+          minorTicks: 2,
+          greenFrom: -10, greenTo: 15,
+          greenColor: 'forestgreen',
+          redFrom: 45, redTo: 60
+          };
+          var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+          chart.draw(data, options);
+        }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge'], 'language': 'pt-br'});
+      google.charts.setOnLoadCallback(drawHumG);
+      var chartTemG, dataTemG, optionsTemG, chartTemH, dataTemH, optionsTemH;
+        function drawHumG() {
+          var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Humi. AR', %HUMIDITY%],
+          ]);
+          var options = {
+          min: 0, max: 100,
+          majorTicks: ['0', '15', '30', '45', '60', '75', '90', '100'],
+          minorTicks: 3,
+          greenFrom: 0, greenTo: 30,
+          greenColor: 'forestgreen',
+          redFrom: 75, redTo: 100
+          };
+          var chart = new google.visualization.Gauge(document.getElementById('chart_divB'));
+          chart.draw(data, options);
+        }
+    </script>
+
+    <p>&nbsp;</p>
+  </body>
+</html>
+<!-- )rawliteral"; -->
